@@ -3,17 +3,17 @@ import tkinter as tk
 import customtkinter
 import sqlite3
 
-conn = sqlite3.connect('users.db')
-cursor = conn.cursor()
-
-def have_account():
-    root.destroy()
-    import main
 
 def connected():
     root.destroy()
     import signup
 
+def have_account():
+    root.destroy()
+    import main
+
+conn = sqlite3.connect('users.db')
+cursor = conn.cursor()
 def enter_data():
     get_data = """
         SELECT username, password FROM user_data
@@ -29,9 +29,7 @@ def enter_data():
             error = tk.Label(root, text='Incorrect Username or Password!', fg = '#E0F2F1', bg='#26A69A', font=('Ariel 10 '))
             error.place(relx=0.5, rely=0.6, anchor=CENTER)
 
-def connected():
-    root.destroy()
-    import signup
+
 
 root = tk.Tk()
 root.resizable(False,False)
@@ -39,7 +37,6 @@ root.geometry("700x600")
 root.title("Location de Voiture - Login")
 favicon = PhotoImage(file = "resources/favicon.png")
 root.iconphoto(False, favicon)
-
 bgimg= tk.PhotoImage(file = "resources/bground.png")
 limg= Label(root, i=bgimg)
 limg.pack()
